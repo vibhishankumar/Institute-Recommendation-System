@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to Institute Recommendation.</title>
+    
+<!--<meta name="google-signin-client_id" content="531722767951-gqe0psvii61icnnmf0e1t976eql7i60u.apps.googleusercontent.com">
+    -->
+<link rel="stylesheet" href="w3.css">
+            <link rel="stylesheet" href="main.css">
+
+  
+<style>
+
+
+/* Add styles to the form container */
+.container {
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    max-width: 300px;
+    padding: 16px;
+    background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color: #33A5FF;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* Full height */
+  height: 60%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+/* Images used */
+.img1 { background-image: url("loginbackimage.jpg"); }
+.img2 { background-image: url("future.jpg"); }
+.img3 { background-image: url("childedu.jpg"); }
+
+
+/* Position text in the middle of the page/image */
+.bg-text {
+ 
+ 
+  font-size: 12px;
+    
+  position: fixed;
+  top: 30%;
+  left: 50%;
+    
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 350px;
+  padding: 20px;
+  text-align: center;
+}
+</style>
+</head>
+<body style="background-color: grey;">
+
+    <!--progress bar-->
+    
+<div id="myProgress">
+  <div id="myBar"></div>  
+</div>
+    
+    <!-- -->
+	<nav class="w3-bar w3-black">
+          <a href="#"  class="w3-button w3-bar-item"  style="float:right;">About Us</a>
+  <a href="signup.html"  class="w3-button w3-bar-item"  style="float:right;">Sign Up</a>
+  </nav>
+
+<div class="bg-image img1"></div>
+<div class="bg-image img2"></div>
+<div class="bg-image img3"></div>
+
+
+    
+    
+    <div class="bg-text">
+    <div class="container">
+	<!--<form  action="/action_page.php" class="container"> -->
+    <h1>Login</h1>
+       
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email"  id="emaillogin">
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password"  id="passwordlogin" >
+
+    <button type="submit" class="btn" style="background-color: ##00cc00" onclick="login()">Login</button>
+       <div style="padding-top: 25px;">
+        <a href="signup.html" style="color: blue">Not a user Sign Up Now!</a>
+        </div>
+  <!--</form>
+    --></div>
+    </div>
+    
+
+    
+
+<footer class="w3-container w3-center w3-black " style="height:35px; padding-top:5px;">
+  @copyright by institute recommendation.com
+</footer>
+    
+    
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+            <script defer src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC-GA633sPd8ZZ-AAz-STLqPch50eUkuSI",
+    authDomain: "mvvv-3fb7c.firebaseapp.com",
+    databaseURL: "https://mvvv-3fb7c.firebaseio.com",
+    projectId: "mvvv-3fb7c",
+    storageBucket: "mvvv-3fb7c.appspot.com",
+    messagingSenderId: "312062665706",
+    appId: "1:312062665706:web:245c3fb6fa67aa69"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script> 
+     <script type="text/javascript">
+    function preventBack(){
+        window.history.forward();
+    }
+        setTimeout("preventBack()",0);
+        window.onload = function(){null;}
+    </script>
+<script src="index.js"></script>
+</body>
+</html>

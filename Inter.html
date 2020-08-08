@@ -1,0 +1,333 @@
+<!Doctype html>
+<html>
+    
+    <head> 
+        <title>Institute Recommendation</title>
+        <link rel="stylesheet" href="w3.css">
+        <link rel="stylesheet" href="font-awesome.min.css">
+        <link rel="stylesheet" href="main.css">
+          <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
+        
+
+     </head>
+      <body style="background-color: aliceblue;">
+        <header>
+         <!--   <div id="top">
+            <p id="p1"><b>Institute Recommendation</b></p>
+            </div>
+            -->
+        <nav class="w3-bar w3-black">
+            <a href="index.html" class="w3-button w3-bar-item" style="text-decoration: underline;">Institute Recommendation</a>
+                    <a href="#"  class="w3-button w3-bar-item"  style="float:right;">About Us</a>
+        </nav>
+            
+        </header>
+        <span style="color: white;background-color: blue;padding: 5px;">Filter By:
+<select style="margin-top: 1px;" name="stateslist" id="filterdata" onchange="itemget()">
+<option value="select">State</option>
+<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Orissa">Orissa</option>
+<option value="Pondicherry">Pondicherry</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttaranchal">Uttaranchal</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="West Bengal">West Bengal</option>
+</select>
+          
+          </span>
+          <span style="float: right;color: white;background-color: blue;padding: 3px;">Filter By:
+            
+            <select name="ratelist" id="filterrating" onchange="rateget()">
+                <option value="selectrate">rating</option>
+                <option value="top">top</option>
+                <option value="medium">medium</option>
+                <option value="least">least</option>
+               </select></span>
+        
+<hr>
+          <!-- style="background: grey;height: 220px;padding: 20px;" 
+action="/rated.js"-->
+<div id="list_div" style="margin: 25px;">
+    
+  </div>
+   <!--
+<div class="form-popup" id="myForm">
+  <form  class="form-container" onsubmit="return haha()">
+      <p style="text-align: center;"><b>Rate for</b></p>
+      <p id="printinstname" style="text-align: center;">institutename</p>
+      
+      <label for="facility"><b>Facility</b></label><br>
+      <input type="float" placeholder="Rate for facility provided" name="facility" id="faci" required>
+      
+      <label for="faculty"><b>Faculty</b></label>
+      <input type="float" placeholder="Rate for Faculties" name="faculty" id="fac" required><br>
+      
+     <label for="fee"><b>Fee</b></label>
+      <input type="float" placeholder="Rate for fee charges" name="fee" id="fe" required><br>
+      
+     <label for="success"><b>Success</b></label>
+      <input type="float" placeholder="Rate for Success ratio" name="success" id="succ" required><br>
+      
+      <label for="discipline"><b>Discipline</b></label>
+      <input type="float" placeholder="Rate for Discipline" name="discipline" id="dis" required><br>
+
+    <button type="submit" class="btn" id="submitrate">Submit</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>   
+         -->
+          <!-- creating table 
+          <table id="myTable">
+              <tr>
+                  <td id="td1"><img src="childedu.jpg" id="imgretrieve" style="float: left; width: 250px; height: 220px;"/></td>
+                  <td id="td2"><p style="float: left;">Institute name</p></td>
+                  <td id="td3">Row1 cell3</td>
+                  <td id="td4">Row1 cell4</td>
+                  <td id="td5">Row1 cell5</td>
+              </tr>
+</table>
+
+  <div>
+                  <ol id="userlist"> 
+              </ol>
+   
+          </div>
+      //  
+
+          -->
+          
+        
+          
+            <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+            <script defer src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC-GA633sPd8ZZ-AAz-STLqPch50eUkuSI",
+    authDomain: "mvvv-3fb7c.firebaseapp.com",
+    databaseURL: "https://mvvv-3fb7c.firebaseio.com",
+    projectId: "mvvv-3fb7c",
+    storageBucket: "mvvv-3fb7c.appspot.com",
+    messagingSenderId: "312062665706",
+    appId: "1:312062665706:web:245c3fb6fa67aa69"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+    // code for retrieve the data
+   database = firebase.database();
+    var ref = database.ref('user');
+    
+   // ref.orderByChild('state').on('value', gotData, errData);
+
+     //ref.on('child_changed', gotData, errData);
+
+
+    function itemget(){
+            
+                        var selectedValue = document.getElementById("filterdata").value;
+                      //  console.log(selectedValue); 
+                         ref.orderByChild('state').equalTo(selectedValue).on('value', gotData, errData);
+//                                 ref.orderByChild('state').equalTo(selectedValue).on('child_changed', gotData, errData);
+
+                        
+                        //console.log(topUserPostsRef);
+
+
+                    }
+    
+    function rateget(){
+        
+        var selectedratevalue = document.getElementById('filterrating').value;
+        
+        var rateval;
+        
+        if(selectedratevalue == "top")
+        {
+             ref.orderByChild('rate').startAt('8.5').on('value',gotData,errData);
+
+        }
+        if(selectedratevalue == "medium")
+        {
+                ref.orderByChild('rate').startAt('6').endAt('8.5').on('value',gotData,errData);
+
+        }
+        if(selectedratevalue == "least")
+            {
+              ref.orderByChild('rate').endAt('6').on('value',gotData,errData);
+
+            }
+       
+    }
+    
+    function gotData(data){        
+        
+        var User = data.val();
+        var Keys = Object.keys(User);
+        
+        for(var i = 0; i < Keys.length; i++){
+           
+            var k = Keys[i];
+            var image = User[k].image;
+            var institute = User[k].institute;
+            var offiial_website = User[k].offiial_website;
+           // console.log(offiial_website);
+            var rate = User[k].rate;
+            var state = User[k].state;
+            var faculty = User[k].faculty_rate;
+            var facility = User[k].facility_rate;
+            var fee = User[k].fee_rate;
+            var discipline = User[k].discipline_rate;
+            var success = User[k].success_rate;
+          
+            const list_div = document.querySelector("#list_div");
+
+          list_div.innerHTML += '<div class="list_item" style="height:300px;"><img src=' + image + ' style="float: left; width: 300px; height: 100%;padding:15px;"><h1 style="text-align: center;color: white;">' + institute +'</h1><address style="color:#F2F3F4; margin:40px;font-size:18px;">' + state + '</address><a href=' + offiial_website + ' target="_blank" title="visit official website" style="color:#3386FF;float:right;margin-top:-150px;padding:15px;">Visit Website</a><div class="divfortable"><span class="spanspace" id="successrateid">' + success + '</span><span class="spanspace" id="facilityrateid" style="margin-left:24px;">' + facility + '</span><span class="spanspace" id="facultyrateid" style="margin-left:24px;">' + faculty + '</span><span class="spanspace" id="disciplinerateid" style="margin-left:24px;"style="margin-left:24px;">' + discipline + '</span><span class="spanspace" id="feerateid" style="margin-left:24px;">' + fee + '</span></div> <div class="divfortable"><span class="spanspace" id="successrate">Success</span><span class="spanspace" id="facilityrate">Facility</span><span class="spanspace" id="facultyrate">Faculty</span><span class="spanspace" id="disciplinerate">Discipline</span><span class="spanspace" id="feerate">Fee</span></div><div class="overAll"><pre style="color:#3DB506;">OverAll Rating</pre><pre style="color:#3DB506">' + rate + '</pre></div><a href="#" id="btnrate"  style="text-decoration:none;" onclick="clickfunc(this)">' + k + '</a></div><hr>'
+    
+        }
+    }
+    function errData(err){
+        console.log('Error!');
+        console.log(err);
+    }
+  
+    clickfunc = function(k){
+     
+               var me = firebase.auth().currentUser;
+               var mail = me.email;
+                var id = me.uid;
+             
+                var t = k.innerText || k.textContent;
+
+              var txt;
+        
+              var facul = prompt("Rate for Faculty:", "put your rating value out of 10");
+              var fees = prompt("Rate for Fee", "put your rating value out of 10");
+              var facili = prompt("Rate for Facility", "put your rating value out of 10");
+              var disci = prompt("Rate for Discipline", "put your rating value out of 10");
+              var succe = prompt("Rate for Success", "put your rating value out of 10");
+
+             if ((facul || fees || facili || disci || succe) == null || (facul || fees || facili || disci || succe) == "" || (facul || fees || facili || disci || succe) == "put your rating value out of 10" || (facul || fees || facili || disci || succe) > 10) 
+              {
+                window.alert('you have not rate properly! kindly rate properly');
+        
+              } 
+            else {
+                
+                window.alert('Thanks for your Review');
+                console.log(facul);
+                console.log(facili);
+                console.log(fees);
+                console.log(disci);
+                console.log(succe);
+           
+                
+                 ref.child(t).child('averagerating/' +id).set({
+                     facility:facili,
+                     faculty:facul,
+                     fee:fees,
+                     discipline:disci,
+                     success:succe,
+                     username:mail
+                 });
+                
+                
+                
+                ref.child(t).child('averagerating/').once('value', function(snapshot) {
+                        
+                       var User = snapshot.val();
+                       var Keys = Object.keys(User);
+                        
+                    var sum1 = 0;
+                    var sum2 = 0;
+                    var sum3 = 0;
+                    var sum4 = 0;
+                    var sum5 = 0;
+                    var sum6 = 0;
+                    var actualfaculty;
+                    var actualfacility;
+                    var actualfee;
+                    var actualdiscipline;
+                    var actualsuccess;
+                    var sizearray  = Keys.length;
+
+                     for(var j = 0; j < Keys.length; j++)
+                     {
+                        var kamkakey = Keys[j];
+                        var faculty = User[kamkakey].faculty;
+                        var facility = User[kamkakey].facility;
+                        var fee = User[kamkakey].fee;
+                        var discipline = User[kamkakey].discipline;
+                        var success = User[kamkakey].success;
+
+                        sum1 =  eval(sum1) + eval(faculty);
+                        sum2 =  eval(sum2) + eval(facility);
+                        sum3 =  eval(sum3) + eval(fee);
+                        sum4 =  eval(sum4) + eval(discipline);
+                        sum5 =  eval(sum5) + eval(success);
+                         
+                         sum6 = eval(sum6) + eval(sum1)+ eval(sum2) + eval(sum3) + eval(sum4) + eval(sum5);
+
+                     }
+
+                    actualfaculty = (eval(sum1)/sizearray).toFixed(2);
+                    actualfacility = (eval(sum2)/sizearray).toFixed(2);
+                    actualfee = (eval(sum3)/sizearray).toFixed(2);
+                    actualdiscipline = (eval(sum4)/sizearray).toFixed(2);
+                    actualsuccess = (eval(sum5)/sizearray).toFixed(2);
+
+                    actualrate = (eval(sum6)/5).toFixed(2);
+                    
+                      ref.child(t + '/' ).update({
+                     facility_rate:actualfacility,
+                     faculty_rate:actualfaculty,
+                     fee_rate:actualfee,
+                     discipline_rate:actualdiscipline,
+                     success_rate:actualsuccess,
+                     rate:actualrate
+                 });
+                 
+                    
+                    });
+    
+              }
+                    }
+            
+</script>
+    </body>
+    <script src="rated.js"></script> 
+</html>
+
+
